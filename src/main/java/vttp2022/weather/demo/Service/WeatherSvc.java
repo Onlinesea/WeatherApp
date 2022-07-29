@@ -34,6 +34,7 @@ public class WeatherSvc {
 
     //To get the values from the websites
     public Optional<Weather> getWeather (String city){
+        
         String weatherUrl = UriComponentsBuilder.fromUriString(URL)
             .queryParam("q",city.replaceAll(" ", "+"))
             .queryParam("units", "metric")
