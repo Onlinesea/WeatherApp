@@ -20,7 +20,7 @@ public class WeatherSvc {
     private static final Logger logger = LoggerFactory.getLogger(WeatherSvc.class);
 
     private static String URL = "https://api.openweathermap.org/data/2.5/weather";
-
+/* 
     @Value("${open.weather.map}")
     private String apiKey;
 
@@ -31,10 +31,11 @@ public class WeatherSvc {
         hasKey =null !=apiKey;
         logger.info(">>> API KEY set :" + hasKey);
     }
+*/
 
     //To get the values from the websites
     public Optional<Weather> getWeather (String city){
-        
+        String apiKey = System.getenv("OPEN_WEATHER_MAP_API_KEY");
         String weatherUrl = UriComponentsBuilder.fromUriString(URL)
             .queryParam("q",city.replaceAll(" ", "+"))
             .queryParam("units", "metric")
