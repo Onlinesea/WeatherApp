@@ -26,9 +26,11 @@ public class Conditions {
         this.icon = icon;
     }
 
+    //Setting the description of the conditions to main-description from the json file 
     public static Conditions createJson(JsonObject o){
         Conditions c = new Conditions();
         c.description ="%S-%s".formatted(o.getString("main"),o.getString("description"));
+        c.icon="%s".formatted(o.getString("icon"));
         
         return c;
     }
