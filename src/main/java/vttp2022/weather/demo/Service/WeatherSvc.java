@@ -35,7 +35,11 @@ public class WeatherSvc {
 
     //To get the values from the websites
     public Optional<Weather> getWeather (String city){
+        
+        // the apikey will be inserted into the heroku app under Config Vars
         String apiKey = System.getenv("OPEN_WEATHER_MAP_API_KEY");
+
+        //Using the in build formula to build the get request
         String weatherUrl = UriComponentsBuilder.fromUriString(URL)
             .queryParam("q",city.replaceAll(" ", "+"))
             .queryParam("units", "metric")
@@ -43,6 +47,7 @@ public class WeatherSvc {
             .toUriString();
             logger.info(">>>> Complete Weather URI API address : " + weatherUrl);
 
+            //Initialise the restTemplate
             RestTemplate template = new RestTemplate();
             ResponseEntity<String> resp = null;
 
